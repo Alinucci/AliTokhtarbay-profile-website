@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\facades\DB;
+use App\Models\Post;
+use App\Http\Controllers\BlogController;
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -19,3 +22,16 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('post/add', function(){
+    DB::table('post')->insert([
+        'title'=>'Harry Potter and the Philosopher Stone',
+        'body'=>'2001 fantasy film directed by Chris Columbus and distributed by Warner Bros.'
+    ]);
+});
+Route::get('post', function(){
+    $post = Post::find(1);
+    return $post;
+});
+
+Route::get('blog/index', [BlogController::class, 'index']);
