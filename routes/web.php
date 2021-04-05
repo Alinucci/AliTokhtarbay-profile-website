@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\facades\DB;
 use App\Models\Post;
+use App\Models\edxRegist;
 use App\Http\Controllers\BlogController;
 /*
 
@@ -23,6 +24,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+// =====================================================================
 Route::get('post/add', function(){
     DB::table('post')->insert([
         'title'=>'Harry Potter and the Philosopher Stone',
@@ -39,3 +41,17 @@ Route::get('blog/create', function(){
     return view('post.create');
 });
 Route::post('blog/create', [BlogController::class, 'store'])->name('add-client');
+
+//=====================================================
+
+Route::get('/edx', function () {
+    return view('index');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('registr', function()
+{
+    return view('registr');
+});
